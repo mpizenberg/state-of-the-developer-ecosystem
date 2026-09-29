@@ -1,3 +1,4 @@
+temp/
 **/elm-stuff
 .yarn-integrity
 .wrangler
