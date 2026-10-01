@@ -37,9 +37,11 @@ widget.definition = definition;
 widget.surveyRef = { txId: new Uint8Array(32), index: 0 };
 widget.responder = { 4: { type: "key", keyHash: new Uint8Array(28).fill(1) } };
 widget.tipEpoch = Number(definition.endEpoch) - 1;
+widget.showRole = false;
 widget.conditions = built.conditions;
 widget.translations = built.translations;
 widget.maxTextBytes = built.maxTextBytes;
+widget.hiddenSchemas = definition.questions.flatMap((q) => (q.type === "custom" ? [q.methodSchema.uri] : []));
 widget.stash = stash();
 widget.messages = { respond: { signAndSubmit: "Preview response" } };
 const showLocale = () => {
