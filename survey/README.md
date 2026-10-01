@@ -47,6 +47,18 @@ yarn results
 > yarn results --remote
 > ```
 
+## CIP-179
+
+The survey is being moved on chain as a [CIP-179](https://github.com/mpizenberg/Tessera/blob/main/frontend/cip-179.md) survey. `cip179/build.js` turns `public/survey.json` into the CIP-179 survey definition, and reports what doesn't fit (labels over 64 bytes, unsupported conditions, the definition size, ...):
+
+```
+yarn cip179
+```
+
+With `--owner <key hash> --end-epoch <epoch> --out <dir>`, it also writes the definition as cardano-cli metadata JSON, the widget's display conditions and translations, and the mapping used to convert responses back to `answers.json` rows.
+
+`yarn test` runs the 2025 answers through CIP-179 responses and back, to check that mapping.
+
 ## Deployment
 
 Deploy on Cloudflare by simply pushing the repository. The workers & pages then does its magic. Note that Turnstile secret needs to be configured in the Cloudflare dashboard directly.
