@@ -19,7 +19,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 
-import { buildSurvey } from "./definition.js";
+import { buildSurvey, cutLabels } from "./definition.js";
 import { toCbor, toDetailedJson } from "./metadatum.js";
 
 const SCHEMA_FILE = new URL("./free-text.schema.json", import.meta.url);
@@ -96,18 +96,6 @@ function hexBytes(hex, length) {
     process.exit(2);
   }
   return new Uint8Array(Buffer.from(hex, "hex"));
-}
-
-function cutLabels(definition) {
-  const cut = (label) => {
-    let text = label;
-    while (new TextEncoder().encode(text).length > 64) text = text.slice(0, -1);
-    return text;
-  };
-  const questions = definition.questions.map((q) =>
-    q.options ? { ...q, options: { ...q.options, labels: q.options.labels.map(cut) } } : q,
-  );
-  return { ...definition, questions };
 }
 
 /** Label-17 metadata of a response answering everything, as long as allowed. */

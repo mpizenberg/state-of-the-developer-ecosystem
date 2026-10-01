@@ -409,3 +409,22 @@ function buildTranslations(survey, entries) {
   }
   return { defaultLanguage: DEFAULT_LANGUAGE, translations };
 }
+
+/**
+ * The definition with option and scale labels cut to what fits on chain, so
+ * that a survey with long labels can still be measured and previewed.
+ */
+export function cutLabels(definition) {
+  const cut = (label) => {
+    let text = label;
+    while (utf8ByteLength(text) > MAX_CHUNK_BYTES) text = text.slice(0, -1);
+    return text;
+  };
+  const cutAll = (list) => (list?.labels ? { ...list, labels: list.labels.map(cut) } : list);
+  const questions = definition.questions.map((q) => ({
+    ...q,
+    ...(q.options && { options: cutAll(q.options) }),
+    ...(q.scale && { scale: cutAll(q.scale) }),
+  }));
+  return { ...definition, questions };
+}

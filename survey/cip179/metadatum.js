@@ -6,7 +6,9 @@
 //   the survey site;
 // - canonical CBOR, to know the exact size a payload adds to a transaction.
 
-const hex = (bytes) => Buffer.from(bytes).toString("hex");
+// No Node APIs: the preview page uses this module too.
+const hex = (bytes) => Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+const fromHex = (text) => Uint8Array.from(text.match(/../g) ?? [], (h) => parseInt(h, 16));
 
 /** Metadatum → detailed JSON schema value. */
 export function toDetailedJson(m) {
@@ -22,7 +24,7 @@ export function toDetailedJson(m) {
 export function fromDetailedJson(j) {
   if ("int" in j) return BigInt(j.int);
   if ("string" in j) return j.string;
-  if ("bytes" in j) return new Uint8Array(Buffer.from(j.bytes, "hex"));
+  if ("bytes" in j) return fromHex(j.bytes);
   if ("list" in j) return j.list.map(fromDetailedJson);
   if ("map" in j) return new Map(j.map.map(({ k, v }) => [fromDetailedJson(k), fromDetailedJson(v)]));
   throw new TypeError(`not a detailed metadata JSON value: ${JSON.stringify(j)}`);

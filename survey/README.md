@@ -57,6 +57,14 @@ yarn cip179
 
 With `--owner <key hash> --end-epoch <epoch> --out <dir>`, it also writes the definition as cardano-cli metadata JSON, the widget's display conditions and translations, and the mapping used to convert responses back to `answers.json` rows.
 
+To try the survey in the widget respondents will use:
+
+```
+yarn preview
+```
+
+and open http://localhost:8179/. The survey is rebuilt from `survey.json` on every reload, with the builder's problems listed above it (labels over 64 bytes are cut instead of stopping the build). Nothing is submitted: submitting checks the response the widget gives (size, CIP-179 validity, display conditions) and shows the `answers.json` row it converts to. Unsent answers are kept in the browser until "Forget my answers".
+
 `yarn test` runs the 2025 answers through CIP-179 responses and back, to check that mapping.
 
 ## Deployment

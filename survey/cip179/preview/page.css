@@ -1,0 +1,118 @@
+:root {
+  color-scheme: light dark;
+  --bg: #fff;
+  --fg: #1a1a1a;
+  --muted: #666;
+  --line: #ddd;
+  --panel: #f5f6f8;
+  --error: #b42318;
+  --warning: #b54708;
+  --ok: #067647;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111418;
+    --fg: #e8e8e8;
+    --muted: #9aa0a6;
+    --line: #333;
+    --panel: #1b1f24;
+    --error: #f97066;
+    --warning: #fdb022;
+    --ok: #47cd89;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+header,
+main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+header {
+  border-bottom: 1px solid var(--line);
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+}
+
+select,
+button {
+  font: inherit;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.error {
+  color: var(--error);
+  white-space: pre-wrap;
+}
+
+details#problems {
+  background: var(--panel);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+details#problems summary {
+  cursor: pointer;
+}
+
+details#problems li {
+  font-size: 0.9rem;
+}
+
+.level-error {
+  color: var(--error);
+}
+
+.level-warning {
+  color: var(--warning);
+}
+
+.level-info {
+  color: var(--muted);
+}
+
+.check-ok {
+  color: var(--ok);
+}
+
+.check-fail {
+  color: var(--error);
+}
+
+#result {
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+}
+
+pre {
+  background: var(--panel);
+  border-radius: 6px;
+  padding: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+}
