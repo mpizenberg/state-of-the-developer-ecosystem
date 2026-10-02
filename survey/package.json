@@ -16,6 +16,7 @@
     "test": "node --test 'cip179/test/*.test.js'"
   },
   "dependencies": {
+    "@evolution-sdk/evolution": "0.5.16",
     "@noble/hashes": "^2.4.0",
     "cardano-tessera-respond": "0.3.0",
     "cip-179": "0.6.0",
