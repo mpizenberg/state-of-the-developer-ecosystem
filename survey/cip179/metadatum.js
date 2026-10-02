@@ -2,17 +2,20 @@
 // array, Map) to the formats we store or measure it in:
 //
 // - the cardano-cli "detailed" metadata JSON schema, which can be published
-//   with `cardano-cli ... --json-metadata-detailed-schema` and read back by
-//   the survey site;
+//   with `cardano-cli ... --json-metadata-detailed-schema` or imported in
+//   Tessera's Create page;
 // - canonical CBOR, to know the exact size a payload adds to a transaction.
 
 // No Node APIs: the preview page uses this module too.
 const hex = (bytes) => Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
 const fromHex = (text) => Uint8Array.from(text.match(/../g) ?? [], (h) => parseInt(h, 16));
 
-/** Metadatum → detailed JSON schema value. */
+/**
+ * Metadatum → detailed JSON schema value. Integers beyond 2^53 stay exact as
+ * raw JSON digits (cardano-cli and Tessera reject them as strings).
+ */
 export function toDetailedJson(m) {
-  if (typeof m === "bigint") return { int: Number.isSafeInteger(Number(m)) ? Number(m) : m.toString() };
+  if (typeof m === "bigint") return { int: Number.isSafeInteger(Number(m)) ? Number(m) : JSON.rawJSON(m.toString()) };
   if (typeof m === "string") return { string: m };
   if (m instanceof Uint8Array) return { bytes: hex(m) };
   if (Array.isArray(m)) return { list: m.map(toDetailedJson) };
