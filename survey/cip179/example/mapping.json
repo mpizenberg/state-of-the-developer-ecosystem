@@ -1,0 +1,160 @@
+{
+  "questions": [
+    {
+      "name": "question1",
+      "values": [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4"
+      ]
+    },
+    {
+      "name": "question2",
+      "values": [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "other"
+      ]
+    },
+    {
+      "name": "question2-Comment"
+    },
+    {
+      "name": "question3",
+      "values": [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "none"
+      ]
+    },
+    {
+      "name": "question4",
+      "values": [
+        "Item 2",
+        "Item 4",
+        "Item 5",
+        "Item 3",
+        "Item 1",
+        "Item 6",
+        "other"
+      ]
+    },
+    {
+      "name": "question4-Comment"
+    },
+    {
+      "name": "question5",
+      "values": [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "Item 6",
+        "other"
+      ]
+    },
+    {
+      "name": "question5-Comment"
+    },
+    {
+      "name": "question6",
+      "values": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "question7",
+      "values": [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4"
+      ]
+    },
+    {
+      "name": "question8",
+      "values": [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "Item 6"
+      ]
+    },
+    {
+      "name": "question9",
+      "values": [
+        "Row 1",
+        "Row 2",
+        "Row 3",
+        "Row 4"
+      ],
+      "levels": [
+        "Column 1",
+        "Column 2",
+        "Column 3",
+        "Column 4",
+        "Column 5"
+      ]
+    },
+    {
+      "name": "question10",
+      "values": [
+        "security",
+        "speed"
+      ],
+      "levels": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "question11"
+    },
+    {
+      "name": "question12"
+    },
+    {
+      "name": "question13",
+      "values": [
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5"
+      ]
+    },
+    {
+      "name": "question13-Comment"
+    },
+    {
+      "name": "question14"
+    },
+    {
+      "name": "question15",
+      "field": "text1"
+    },
+    {
+      "name": "question15",
+      "field": "text2"
+    },
+    {
+      "name": "question16"
+    },
+    {
+      "name": "question17"
+    }
+  ]
+}

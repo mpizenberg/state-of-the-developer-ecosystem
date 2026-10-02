@@ -1,0 +1,409 @@
+{
+  "title": {
+    "default": "Cardano Developer Survey 2026 (test)",
+    "fr": "Enquête développeurs Cardano 2026 (test)",
+    "ja": "Cardano 開発者アンケート 2026（テスト）",
+    "vi": "Khảo sát nhà phát triển Cardano 2026 (thử nghiệm)"
+  },
+  "description": {
+    "default": "A test survey for the preview testnet, with every kind of question the 2026 survey may use. Its answers are not part of any report.",
+    "fr": "Une enquête de test sur le testnet preview, avec chaque type de question que l'enquête 2026 peut utiliser. Ses réponses ne font partie d'aucun rapport.",
+    "ja": "プレビュー・テストネット用のテストアンケートです。2026年のアンケートで使う可能性のあるすべての種類の質問を含みます。回答はどのレポートにも使われません。"
+  },
+  "showProgressBar": true,
+  "progressBarType": "questions",
+  "showQuestionNumbers": true,
+  "triggers": [{ "type": "complete", "expression": "{question1} = 'Item 5'" }],
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "html",
+          "name": "question0",
+          "html": {
+            "default": "Answers are published on the Cardano chain, publicly and permanently.",
+            "fr": "Les réponses sont publiées sur la chaîne Cardano, publiquement et pour toujours.",
+            "ja": "回答は Cardano チェーン上に公開され、永久に残ります。",
+            "vi": "Câu trả lời được công bố công khai và vĩnh viễn trên chuỗi Cardano."
+          }
+        },
+        {
+          "type": "radiogroup",
+          "name": "question1",
+          "title": {
+            "default": "How many years of experience do you have writing software?",
+            "fr": "Combien d'années d'expérience avez-vous en développement logiciel ?",
+            "ja": "ソフトウェア開発の経験は何年ありますか？",
+            "vi": "Bạn có bao nhiêu năm kinh nghiệm viết phần mềm?"
+          },
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Item 5",
+              "text": {
+                "default": "I do not write software",
+                "fr": "Je ne développe pas de logiciels",
+                "ja": "ソフトウェアは書きません",
+                "vi": "Tôi không viết phần mềm"
+              }
+            },
+            {
+              "value": "Item 1",
+              "text": { "default": "Less than 1 year", "fr": "Moins d'un an", "ja": "1年未満", "vi": "Dưới 1 năm" }
+            },
+            {
+              "value": "Item 2",
+              "text": { "default": "1 to 2 years", "fr": "1 à 2 ans", "ja": "1〜2年", "vi": "1 đến 2 năm" }
+            },
+            {
+              "value": "Item 3",
+              "text": { "default": "3 to 7 years", "fr": "3 à 7 ans", "ja": "3〜7年", "vi": "3 đến 7 năm" }
+            },
+            {
+              "value": "Item 4",
+              "text": { "default": "More than 7 years", "fr": "Plus de 7 ans", "ja": "7年以上", "vi": "Hơn 7 năm" }
+            }
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "question2",
+          "title": {
+            "default": "Which best describes your current role?",
+            "fr": "Qu'est-ce qui décrit le mieux votre rôle actuel ?",
+            "ja": "現在の役割に最も近いものはどれですか？",
+            "vi": "Điều nào mô tả đúng nhất vai trò hiện tại của bạn?"
+          },
+          "isRequired": true,
+          "showOtherItem": true,
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": { "default": "Software engineer", "fr": "Ingénieur logiciel", "ja": "ソフトウェアエンジニア", "vi": "Kỹ sư phần mềm" }
+            },
+            {
+              "value": "Item 2",
+              "text": { "default": "Researcher", "fr": "Chercheur", "ja": "研究者", "vi": "Nhà nghiên cứu" }
+            },
+            {
+              "value": "Item 3",
+              "text": { "default": "Founder", "fr": "Fondateur", "ja": "創業者", "vi": "Nhà sáng lập" }
+            },
+            {
+              "value": "Item 4",
+              "text": { "default": "Student", "fr": "Étudiant", "ja": "学生", "vi": "Sinh viên" }
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "name": "question3",
+          "title": {
+            "default": "Which parts of Cardano do you build on?",
+            "fr": "Sur quelles parties de Cardano développez-vous ?",
+            "ja": "Cardano のどの部分で開発していますか？",
+            "vi": "Bạn xây dựng trên những phần nào của Cardano?"
+          },
+          "description": {
+            "default": "Choose up to 3.",
+            "fr": "Choisissez-en 3 au plus.",
+            "ja": "3つまで選んでください。",
+            "vi": "Chọn tối đa 3."
+          },
+          "maxSelectedChoices": 3,
+          "showNoneItem": true,
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": { "default": "Smart contracts", "fr": "Contrats intelligents", "ja": "スマートコントラクト", "vi": "Hợp đồng thông minh" }
+            },
+            {
+              "value": "Item 2",
+              "text": { "default": "Off-chain code", "fr": "Code hors chaîne", "ja": "オフチェーンコード", "vi": "Mã ngoài chuỗi" }
+            },
+            {
+              "value": "Item 3",
+              "text": { "default": "Wallets", "fr": "Portefeuilles", "ja": "ウォレット", "vi": "Ví" }
+            },
+            {
+              "value": "Item 4",
+              "text": { "default": "Node and infrastructure", "fr": "Nœud et infrastructure", "ja": "ノードとインフラ", "vi": "Node và hạ tầng" }
+            },
+            {
+              "value": "Item 5",
+              "text": { "default": "Governance tools", "fr": "Outils de gouvernance", "ja": "ガバナンスツール", "vi": "Công cụ quản trị" }
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "question4",
+          "visibleIf": "{question3} anyof ['Item 1', 'Item 2']",
+          "isRequired": true,
+          "title": {
+            "default": "Which language do you mainly write smart contracts in?",
+            "fr": "Dans quel langage écrivez-vous principalement vos contrats ?",
+            "ja": "主にどの言語でスマートコントラクトを書いていますか？"
+          },
+          "choicesOrder": "asc",
+          "showOtherItem": true,
+          "choices": [
+            { "value": "Item 1", "text": "Plutus (PlutusTx)" },
+            { "value": "Item 2", "text": "Aiken" },
+            { "value": "Item 3", "text": "Plutarch" },
+            { "value": "Item 4", "text": "Helios" },
+            { "value": "Item 5", "text": "OpShin" },
+            { "value": "Item 6", "text": "Scalus" }
+          ]
+        },
+        {
+          "type": "tagbox",
+          "name": "question5",
+          "title": {
+            "default": "Which programming languages are you proficient in?",
+            "fr": "Quels langages de programmation maîtrisez-vous ?",
+            "ja": "どのプログラミング言語に習熟していますか？",
+            "vi": "Bạn thành thạo những ngôn ngữ lập trình nào?"
+          },
+          "isRequired": true,
+          "showOtherItem": true,
+          "otherText": { "default": "Another language", "fr": "Un autre langage", "ja": "その他の言語" },
+          "otherPlaceholder": {
+            "default": "Which other languages?",
+            "fr": "Quels autres langages ?",
+            "ja": "その他の言語は？"
+          },
+          "choices": [
+            { "value": "Item 1", "text": "Haskell" },
+            { "value": "Item 2", "text": "Rust" },
+            { "value": "Item 3", "text": "TypeScript" },
+            { "value": "Item 4", "text": "Python" },
+            { "value": "Item 5", "text": "Go" },
+            { "value": "Item 6", "text": "Scala" }
+          ]
+        },
+        {
+          "type": "rating",
+          "name": "question6",
+          "visibleIf": "{question3} noneof ['none']",
+          "title": {
+            "default": "How often do you ship to mainnet?",
+            "fr": "À quelle fréquence déployez-vous sur le mainnet ?",
+            "ja": "メインネットにどのくらいの頻度でデプロイしますか？"
+          },
+          "rateValues": [
+            { "value": 0, "text": { "default": "Never", "fr": "Jamais", "ja": "一度もない" } },
+            { "value": 1, "text": { "default": "Yearly", "fr": "Chaque année", "ja": "年に1回" } },
+            { "value": 2, "text": { "default": "Monthly", "fr": "Chaque mois", "ja": "月に1回" } },
+            { "value": 3, "text": { "default": "Weekly", "fr": "Chaque semaine", "ja": "週に1回" } }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page2",
+      "elements": [
+        {
+          "type": "ranking",
+          "name": "question7",
+          "title": {
+            "default": "Rank these areas by how much they need improving.",
+            "fr": "Classez ces domaines selon leur besoin d'amélioration.",
+            "ja": "改善が必要な順にこれらの分野を並べてください。",
+            "vi": "Xếp hạng các lĩnh vực này theo mức độ cần cải thiện."
+          },
+          "choices": [
+            {
+              "value": "Item 1",
+              "text": { "default": "Documentation", "fr": "Documentation", "ja": "ドキュメント", "vi": "Tài liệu" }
+            },
+            {
+              "value": "Item 2",
+              "text": { "default": "Developer tools", "fr": "Outils de développement", "ja": "開発ツール", "vi": "Công cụ phát triển" }
+            },
+            {
+              "value": "Item 3",
+              "text": { "default": "Funding", "fr": "Financement", "ja": "資金", "vi": "Tài trợ" }
+            },
+            {
+              "value": "Item 4",
+              "text": { "default": "Community", "fr": "Communauté", "ja": "コミュニティ", "vi": "Cộng đồng" }
+            }
+          ]
+        },
+        {
+          "type": "ranking",
+          "name": "question8",
+          "title": {
+            "default": "Pick and rank up to 3 features you want most.",
+            "fr": "Choisissez et classez jusqu'à 3 fonctionnalités que vous voulez le plus.",
+            "ja": "最も欲しい機能を3つまで選んで順位を付けてください。"
+          },
+          "selectToRankEnabled": true,
+          "minSelectedChoices": 1,
+          "maxSelectedChoices": 3,
+          "choices": [
+            { "value": "Item 1", "text": { "default": "Faster finality", "fr": "Finalité plus rapide", "ja": "より速いファイナリティ" } },
+            { "value": "Item 2", "text": { "default": "Lower fees", "fr": "Frais plus bas", "ja": "より安い手数料" } },
+            { "value": "Item 3", "text": { "default": "Better indexers", "fr": "Meilleurs indexeurs", "ja": "より良いインデクサー" } },
+            { "value": "Item 4", "text": { "default": "Layer 2 support", "fr": "Prise en charge des L2", "ja": "レイヤー2のサポート" } },
+            { "value": "Item 5", "text": { "default": "Zero-knowledge proofs", "fr": "Preuves à divulgation nulle", "ja": "ゼロ知識証明" } },
+            { "value": "Item 6", "text": { "default": "Cross-chain bridges", "fr": "Ponts inter-chaînes", "ja": "クロスチェーンブリッジ" } }
+          ]
+        },
+        {
+          "type": "matrix",
+          "name": "question9",
+          "title": {
+            "default": "How satisfied are you with these tools?",
+            "fr": "Êtes-vous satisfait de ces outils ?",
+            "ja": "これらのツールにどのくらい満足していますか？",
+            "vi": "Bạn hài lòng thế nào với các công cụ này?"
+          },
+          "description": {
+            "default": "Rate only the ones you have used.",
+            "fr": "N'évaluez que ceux que vous avez utilisés.",
+            "ja": "使ったことのあるものだけ評価してください。"
+          },
+          "columns": [
+            { "value": "Column 1", "text": { "default": "Very unsatisfied", "fr": "Très insatisfait", "ja": "とても不満", "vi": "Rất không hài lòng" } },
+            { "value": "Column 2", "text": { "default": "Unsatisfied", "fr": "Insatisfait", "ja": "不満", "vi": "Không hài lòng" } },
+            { "value": "Column 3", "text": { "default": "Neutral", "fr": "Neutre", "ja": "どちらでもない", "vi": "Trung lập" } },
+            { "value": "Column 4", "text": { "default": "Satisfied", "fr": "Satisfait", "ja": "満足", "vi": "Hài lòng" } },
+            { "value": "Column 5", "text": { "default": "Very satisfied", "fr": "Très satisfait", "ja": "とても満足", "vi": "Rất hài lòng" } }
+          ],
+          "rows": [
+            { "value": "Row 1", "text": "cardano-cli" },
+            { "value": "Row 2", "text": "Mesh" },
+            { "value": "Row 3", "text": "Lucid Evolution" },
+            { "value": "Row 4", "text": "Blockfrost" }
+          ]
+        },
+        {
+          "type": "matrix",
+          "name": "question10",
+          "isRequired": true,
+          "isAllRowRequired": true,
+          "title": {
+            "default": "How important is each of these to you?",
+            "fr": "Quelle importance ont ces éléments pour vous ?",
+            "ja": "それぞれどのくらい重要ですか？"
+          },
+          "columns": [
+            { "value": 1, "text": { "default": "Not important", "fr": "Pas important", "ja": "重要でない" } },
+            { "value": 2, "text": { "default": "Important", "fr": "Important", "ja": "重要" } },
+            { "value": 3, "text": { "default": "Essential", "fr": "Essentiel", "ja": "不可欠" } }
+          ],
+          "rows": [
+            { "value": "security", "text": { "default": "Security audits", "fr": "Audits de sécurité", "ja": "セキュリティ監査" } },
+            { "value": "speed", "text": { "default": "Build speed", "fr": "Vitesse de compilation", "ja": "ビルド速度" } }
+          ]
+        },
+        {
+          "type": "rating",
+          "name": "question11",
+          "isRequired": true,
+          "title": {
+            "default": "How likely are you to recommend building on Cardano?",
+            "fr": "Recommanderiez-vous de développer sur Cardano ?",
+            "ja": "Cardano での開発を勧める可能性はどのくらいですか？",
+            "vi": "Bạn có khả năng giới thiệu việc xây dựng trên Cardano đến mức nào?"
+          },
+          "description": {
+            "default": "0 is not at all likely, 10 is extremely likely.",
+            "fr": "0 : pas du tout, 10 : tout à fait.",
+            "ja": "0 はまったくない、10 は非常に高い。"
+          },
+          "rateMin": 0,
+          "rateMax": 10
+        },
+        {
+          "type": "rating",
+          "name": "question12",
+          "visibleIf": "{question2} <> 'Item 4'",
+          "title": {
+            "default": "How many hours a week do you spend on Cardano projects?",
+            "fr": "Combien d'heures par semaine consacrez-vous à des projets Cardano ?",
+            "ja": "Cardano のプロジェクトに週何時間使っていますか？"
+          },
+          "rateMin": 0,
+          "rateMax": 60,
+          "rateStep": 5
+        }
+      ]
+    },
+    {
+      "name": "page3",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "question13",
+          "title": {
+            "default": "Where do you look for help?",
+            "fr": "Où cherchez-vous de l'aide ?",
+            "ja": "どこで助けを求めますか？",
+            "vi": "Bạn tìm kiếm sự trợ giúp ở đâu?"
+          },
+          "showCommentArea": true,
+          "commentText": {
+            "default": "Any community we should know about?",
+            "fr": "Une communauté que nous devrions connaître ?",
+            "ja": "知っておくべきコミュニティはありますか？"
+          },
+          "choices": [
+            { "value": "Item 1", "text": "Discord" },
+            { "value": "Item 2", "text": "Stack Exchange" },
+            { "value": "Item 3", "text": "GitHub" },
+            { "value": "Item 4", "text": { "default": "Forums", "fr": "Forums", "ja": "フォーラム", "vi": "Diễn đàn" } },
+            { "value": "Item 5", "text": { "default": "AI assistants", "fr": "Assistants IA", "ja": "AI アシスタント", "vi": "Trợ lý AI" } }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "question14",
+          "isRequired": true,
+          "title": {
+            "default": "Which country do you live in?",
+            "fr": "Dans quel pays vivez-vous ?",
+            "ja": "お住まいの国はどこですか？",
+            "vi": "Bạn sống ở quốc gia nào?"
+          }
+        },
+        {
+          "type": "multipletext",
+          "name": "question15",
+          "title": {
+            "default": "Which tools do you use the most?",
+            "fr": "Quels outils utilisez-vous le plus ?",
+            "ja": "最もよく使うツールは何ですか？"
+          },
+          "items": [
+            { "name": "text1", "title": { "default": "Editor", "fr": "Éditeur", "ja": "エディタ" } },
+            { "name": "text2", "title": { "default": "Library", "fr": "Bibliothèque", "ja": "ライブラリ" } }
+          ]
+        },
+        {
+          "type": "comment",
+          "name": "question16",
+          "visibleIf": "{question1} = 'Item 1'",
+          "title": {
+            "default": "What made you start writing software this year?",
+            "fr": "Qu'est-ce qui vous a fait commencer à développer cette année ?",
+            "ja": "今年ソフトウェアを書き始めたきっかけは何ですか？"
+          }
+        },
+        {
+          "type": "comment",
+          "name": "question17",
+          "title": {
+            "default": "Anything else you would like to tell us?",
+            "fr": "Autre chose à nous dire ?",
+            "ja": "その他、伝えたいことはありますか？",
+            "vi": "Bạn còn điều gì muốn nói với chúng tôi không?"
+          }
+        }
+      ]
+    }
+  ]
+}

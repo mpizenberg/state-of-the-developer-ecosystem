@@ -1,0 +1,458 @@
+{
+  "conditions": {
+    "2": {
+      "question": 1,
+      "anyOf": [
+        4
+      ]
+    },
+    "4": {
+      "question": 3,
+      "anyOf": [
+        0,
+        1
+      ]
+    },
+    "5": {
+      "question": 4,
+      "anyOf": [
+        6
+      ]
+    },
+    "7": {
+      "question": 6,
+      "anyOf": [
+        6
+      ]
+    },
+    "8": {
+      "question": 3,
+      "noneOf": [
+        5
+      ]
+    },
+    "14": {
+      "question": 1,
+      "noneOf": [
+        3
+      ]
+    },
+    "20": {
+      "question": 0,
+      "anyOf": [
+        0
+      ]
+    }
+  },
+  "translations": {
+    "defaultLanguage": "en",
+    "translations": {
+      "fr": {
+        "title": "Enquête développeurs Cardano 2026 (test)",
+        "description": "Une enquête de test sur le testnet preview, avec chaque type de question que l'enquête 2026 peut utiliser. Ses réponses ne font partie d'aucun rapport.",
+        "questions": [
+          {
+            "prompt": "Combien d'années d'expérience avez-vous en développement logiciel ?",
+            "options": [
+              "Moins d'un an",
+              "1 à 2 ans",
+              "3 à 7 ans",
+              "Plus de 7 ans"
+            ]
+          },
+          {
+            "prompt": "Qu'est-ce qui décrit le mieux votre rôle actuel ?",
+            "options": [
+              "Ingénieur logiciel",
+              "Chercheur",
+              "Fondateur",
+              "Étudiant",
+              "Other"
+            ]
+          },
+          {},
+          {
+            "prompt": "Sur quelles parties de Cardano développez-vous ?\n\nChoisissez-en 3 au plus.",
+            "options": [
+              "Contrats intelligents",
+              "Code hors chaîne",
+              "Portefeuilles",
+              "Nœud et infrastructure",
+              "Outils de gouvernance",
+              "None"
+            ]
+          },
+          {
+            "prompt": "Dans quel langage écrivez-vous principalement vos contrats ?"
+          },
+          {},
+          {
+            "prompt": "Quels langages de programmation maîtrisez-vous ?",
+            "options": [
+              "Haskell",
+              "Rust",
+              "TypeScript",
+              "Python",
+              "Go",
+              "Scala",
+              "Un autre langage"
+            ]
+          },
+          {
+            "prompt": "Quels autres langages ?"
+          },
+          {
+            "prompt": "À quelle fréquence déployez-vous sur le mainnet ?",
+            "options": [
+              "Jamais",
+              "Chaque année",
+              "Chaque mois",
+              "Chaque semaine"
+            ]
+          },
+          {
+            "prompt": "Classez ces domaines selon leur besoin d'amélioration.",
+            "options": [
+              "Documentation",
+              "Outils de développement",
+              "Financement",
+              "Communauté"
+            ]
+          },
+          {
+            "prompt": "Choisissez et classez jusqu'à 3 fonctionnalités que vous voulez le plus.",
+            "options": [
+              "Finalité plus rapide",
+              "Frais plus bas",
+              "Meilleurs indexeurs",
+              "Prise en charge des L2",
+              "Preuves à divulgation nulle",
+              "Ponts inter-chaînes"
+            ]
+          },
+          {
+            "prompt": "Êtes-vous satisfait de ces outils ?\n\nN'évaluez que ceux que vous avez utilisés.",
+            "ratingLabels": [
+              "Très insatisfait",
+              "Insatisfait",
+              "Neutre",
+              "Satisfait",
+              "Très satisfait"
+            ]
+          },
+          {
+            "prompt": "Quelle importance ont ces éléments pour vous ?",
+            "options": [
+              "Audits de sécurité",
+              "Vitesse de compilation"
+            ],
+            "ratingLabels": [
+              "Pas important",
+              "Important",
+              "Essentiel"
+            ]
+          },
+          {
+            "prompt": "Recommanderiez-vous de développer sur Cardano ?\n\n0 : pas du tout, 10 : tout à fait."
+          },
+          {
+            "prompt": "Combien d'heures par semaine consacrez-vous à des projets Cardano ?"
+          },
+          {
+            "prompt": "Où cherchez-vous de l'aide ?",
+            "options": [
+              "Discord",
+              "Stack Exchange",
+              "GitHub",
+              "Forums",
+              "Assistants IA"
+            ]
+          },
+          {
+            "prompt": "Une communauté que nous devrions connaître ?"
+          },
+          {
+            "prompt": "Dans quel pays vivez-vous ?"
+          },
+          {
+            "prompt": "Quels outils utilisez-vous le plus ?\n\nÉditeur"
+          },
+          {
+            "prompt": "Quels outils utilisez-vous le plus ?\n\nBibliothèque"
+          },
+          {
+            "prompt": "Qu'est-ce qui vous a fait commencer à développer cette année ?"
+          },
+          {
+            "prompt": "Autre chose à nous dire ?"
+          }
+        ]
+      },
+      "ja": {
+        "title": "Cardano 開発者アンケート 2026（テスト）",
+        "description": "プレビュー・テストネット用のテストアンケートです。2026年のアンケートで使う可能性のあるすべての種類の質問を含みます。回答はどのレポートにも使われません。",
+        "questions": [
+          {
+            "prompt": "ソフトウェア開発の経験は何年ありますか？",
+            "options": [
+              "1年未満",
+              "1〜2年",
+              "3〜7年",
+              "7年以上"
+            ]
+          },
+          {
+            "prompt": "現在の役割に最も近いものはどれですか？",
+            "options": [
+              "ソフトウェアエンジニア",
+              "研究者",
+              "創業者",
+              "学生",
+              "その他"
+            ]
+          },
+          {
+            "prompt": "その他（具体的に記入してください）"
+          },
+          {
+            "prompt": "Cardano のどの部分で開発していますか？\n\n3つまで選んでください。",
+            "options": [
+              "スマートコントラクト",
+              "オフチェーンコード",
+              "ウォレット",
+              "ノードとインフラ",
+              "ガバナンスツール",
+              "なし"
+            ]
+          },
+          {
+            "prompt": "主にどの言語でスマートコントラクトを書いていますか？",
+            "options": [
+              "Aiken",
+              "Helios",
+              "OpShin",
+              "Plutarch",
+              "Plutus (PlutusTx)",
+              "Scalus",
+              "その他"
+            ]
+          },
+          {
+            "prompt": "その他（具体的に記入してください）"
+          },
+          {
+            "prompt": "どのプログラミング言語に習熟していますか？",
+            "options": [
+              "Haskell",
+              "Rust",
+              "TypeScript",
+              "Python",
+              "Go",
+              "Scala",
+              "その他の言語"
+            ]
+          },
+          {
+            "prompt": "その他の言語は？"
+          },
+          {
+            "prompt": "メインネットにどのくらいの頻度でデプロイしますか？",
+            "options": [
+              "一度もない",
+              "年に1回",
+              "月に1回",
+              "週に1回"
+            ]
+          },
+          {
+            "prompt": "改善が必要な順にこれらの分野を並べてください。",
+            "options": [
+              "ドキュメント",
+              "開発ツール",
+              "資金",
+              "コミュニティ"
+            ]
+          },
+          {
+            "prompt": "最も欲しい機能を3つまで選んで順位を付けてください。",
+            "options": [
+              "より速いファイナリティ",
+              "より安い手数料",
+              "より良いインデクサー",
+              "レイヤー2のサポート",
+              "ゼロ知識証明",
+              "クロスチェーンブリッジ"
+            ]
+          },
+          {
+            "prompt": "これらのツールにどのくらい満足していますか？\n\n使ったことのあるものだけ評価してください。",
+            "ratingLabels": [
+              "とても不満",
+              "不満",
+              "どちらでもない",
+              "満足",
+              "とても満足"
+            ]
+          },
+          {
+            "prompt": "それぞれどのくらい重要ですか？",
+            "options": [
+              "セキュリティ監査",
+              "ビルド速度"
+            ],
+            "ratingLabels": [
+              "重要でない",
+              "重要",
+              "不可欠"
+            ]
+          },
+          {
+            "prompt": "Cardano での開発を勧める可能性はどのくらいですか？\n\n0 はまったくない、10 は非常に高い。"
+          },
+          {
+            "prompt": "Cardano のプロジェクトに週何時間使っていますか？"
+          },
+          {
+            "prompt": "どこで助けを求めますか？",
+            "options": [
+              "Discord",
+              "Stack Exchange",
+              "GitHub",
+              "フォーラム",
+              "AI アシスタント"
+            ]
+          },
+          {
+            "prompt": "知っておくべきコミュニティはありますか？"
+          },
+          {
+            "prompt": "お住まいの国はどこですか？"
+          },
+          {
+            "prompt": "最もよく使うツールは何ですか？\n\nエディタ"
+          },
+          {
+            "prompt": "最もよく使うツールは何ですか？\n\nライブラリ"
+          },
+          {
+            "prompt": "今年ソフトウェアを書き始めたきっかけは何ですか？"
+          },
+          {
+            "prompt": "その他、伝えたいことはありますか？"
+          }
+        ]
+      },
+      "vi": {
+        "title": "Khảo sát nhà phát triển Cardano 2026 (thử nghiệm)",
+        "questions": [
+          {
+            "prompt": "Bạn có bao nhiêu năm kinh nghiệm viết phần mềm?",
+            "options": [
+              "Dưới 1 năm",
+              "1 đến 2 năm",
+              "3 đến 7 năm",
+              "Hơn 7 năm"
+            ]
+          },
+          {
+            "prompt": "Điều nào mô tả đúng nhất vai trò hiện tại của bạn?",
+            "options": [
+              "Kỹ sư phần mềm",
+              "Nhà nghiên cứu",
+              "Nhà sáng lập",
+              "Sinh viên",
+              "Khác"
+            ]
+          },
+          {
+            "prompt": "Khác (vui lòng ghi rõ)"
+          },
+          {
+            "prompt": "Bạn xây dựng trên những phần nào của Cardano?\n\nChọn tối đa 3.",
+            "options": [
+              "Hợp đồng thông minh",
+              "Mã ngoài chuỗi",
+              "Ví",
+              "Node và hạ tầng",
+              "Công cụ quản trị",
+              "Không có"
+            ]
+          },
+          {
+            "options": [
+              "Aiken",
+              "Helios",
+              "OpShin",
+              "Plutarch",
+              "Plutus (PlutusTx)",
+              "Scalus",
+              "Khác"
+            ]
+          },
+          {
+            "prompt": "Khác (vui lòng ghi rõ)"
+          },
+          {
+            "prompt": "Bạn thành thạo những ngôn ngữ lập trình nào?"
+          },
+          {},
+          {},
+          {
+            "prompt": "Xếp hạng các lĩnh vực này theo mức độ cần cải thiện.",
+            "options": [
+              "Tài liệu",
+              "Công cụ phát triển",
+              "Tài trợ",
+              "Cộng đồng"
+            ]
+          },
+          {},
+          {
+            "prompt": "Bạn hài lòng thế nào với các công cụ này?\n\nRate only the ones you have used.",
+            "ratingLabels": [
+              "Rất không hài lòng",
+              "Không hài lòng",
+              "Trung lập",
+              "Hài lòng",
+              "Rất hài lòng"
+            ]
+          },
+          {},
+          {
+            "prompt": "Bạn có khả năng giới thiệu việc xây dựng trên Cardano đến mức nào?\n\n0 is not at all likely, 10 is extremely likely."
+          },
+          {},
+          {
+            "prompt": "Bạn tìm kiếm sự trợ giúp ở đâu?",
+            "options": [
+              "Discord",
+              "Stack Exchange",
+              "GitHub",
+              "Diễn đàn",
+              "Trợ lý AI"
+            ]
+          },
+          {},
+          {
+            "prompt": "Bạn sống ở quốc gia nào?"
+          },
+          {},
+          {},
+          {},
+          {
+            "prompt": "Bạn còn điều gì muốn nói với chúng tôi không?"
+          }
+        ]
+      }
+    }
+  },
+  "maxTextBytes": 1024,
+  "screening": [
+    {
+      "name": "question1",
+      "values": [
+        "Item 5"
+      ]
+    }
+  ]
+}

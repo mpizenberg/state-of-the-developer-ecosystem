@@ -67,6 +67,10 @@ and open http://localhost:8179/. The survey is rebuilt from `survey.json` on eve
 
 `yarn test` runs the 2025 answers through CIP-179 responses and back, to check that mapping.
 
+`cip179/example/survey.json` is a test survey with every kind of question the builder supports (`yarn preview --survey cip179/example/survey.json`), and the files built from it. It is published on the preview testnet as `70928d2c8cca0fa616e8df54a54d5c311deeec354f5a261fa6c1009ffde89aa5#0`, ending at epoch 1530, with the sponsor key as owner in place of the placeholder in `definition.metadata.json`.
+
+`node cip179/sponsor-key.js` generates the sponsor wallet: its seed phrase goes to the gitignored `.dev.vars`, and it prints the address to fund.
+
 ## Deployment
 
 Deploy on Cloudflare by simply pushing the repository. The workers & pages then does its magic. Note that Turnstile secret needs to be configured in the Cloudflare dashboard directly.
