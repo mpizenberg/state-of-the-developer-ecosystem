@@ -63,13 +63,28 @@ To try the survey in the widget respondents will use:
 yarn preview
 ```
 
-and open http://localhost:8179/. The survey is rebuilt from `survey.json` on every reload, with the builder's problems listed above it (labels over 64 bytes are cut instead of stopping the build). Nothing is submitted: submitting checks the response the widget gives (size, CIP-179 validity, display conditions) and shows the `answers.json` row it converts to. Unsent answers are kept in the browser until "Forget my answers".
+and open http://localhost:8179/. The survey is rebuilt from `survey.json` on every reload, with the builder's problems listed above it (labels over 64 bytes are cut instead of stopping the build). Submitting checks the response the widget gives (size, CIP-179 validity, display conditions) and shows the `answers.json` row it converts to. Unsent answers are kept in the browser until "Forget my answers".
 
 `yarn test` runs the 2025 answers through CIP-179 responses and back, to check that mapping.
 
 `cip179/example/survey.json` is a test survey with every kind of question the builder supports (`yarn preview --survey cip179/example/survey.json`), and the files built from it. It is published on the preview testnet as `70928d2c8cca0fa616e8df54a54d5c311deeec354f5a261fa6c1009ffde89aa5#0`, ending at epoch 1530, with the sponsor key as owner in place of the placeholder in `definition.metadata.json`.
 
-`node cip179/sponsor-key.js` generates the sponsor wallet: its seed phrase goes to the gitignored `.dev.vars`, and it prints the address to fund.
+### Sponsored responses
+
+Respondents don't need a wallet: the sponsor wallet pays for their transactions. The browser makes a temporary key, and the response's credential is that key. Then:
+
+1. `POST /api/sponsor` (`functions/api/sponsor/index.js`) checks the Turnstile token. It also checks that the payload is one valid response to our survey, from a key. It builds the transaction from a random sponsor coin, with the response key as required signer and a 5-minute validity window, signs it and returns it.
+2. The browser signs the transaction id with its key, and `POST /api/sponsor/submit` (`functions/api/sponsor/submit.js`) adds that signature and submits the transaction through Koios. It only relays transactions the sponsor signed.
+
+The logic is in `cip179/sponsor.js`, configured by the `SPONSOR_*` vars in `wrangler.jsonc`, and by the `SPONSOR_MNEMONIC` secret. `node cip179/sponsor-key.js` generates the sponsor wallet: its seed phrase goes to the gitignored `.dev.vars`, and it prints the address to fund. For a deployment, set it with `wrangler pages secret put SPONSOR_MNEMONIC` instead.
+
+To try it, run the functions in the preview, with the survey published as `SPONSOR_SURVEY`:
+
+```
+yarn preview --survey cip179/example/survey.json --sponsor
+```
+
+A "Submit on preview" button then appears under the response, and links to the transaction once submitted. The page's key is kept in the browser, so a new submission replaces the previous response. `yarn dev` runs the same functions in the Workers runtime.
 
 ## Deployment
 

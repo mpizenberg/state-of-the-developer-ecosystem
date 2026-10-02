@@ -2,6 +2,8 @@
 // and checks each response it gives the way the export will read it.
 
 import "/modules/cardano-tessera-respond/tessera-respond.es.js";
+import { ed25519 } from "@noble/curves/ed25519.js";
+import { blake2b } from "@noble/hashes/blake2.js";
 import { decodeMetadata, decodePayload, describeProblems, validateResponse } from "cip-179";
 
 import { answersToRow, withoutHiddenAnswers } from "/cip179/answers.js";
@@ -12,6 +14,7 @@ const MAX_TX_BYTES = 16384;
 // hints in English until we give it `messages`.
 const WIDGET_LOCALES = ["en", "fr"];
 const STORAGE = "survey-preview.";
+const EXPLORERS = { preview: "https://preview.cardanoscan.io", mainnet: "https://cardanoscan.io" };
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -25,6 +28,7 @@ const [definition] = decodeMetadata(new Map([[17n, fromDetailedJson(built.metada
 
 showProblems(built.problems);
 showScreening(built.screening);
+const sponsor = built.sponsor && sponsoring(built.sponsor);
 
 // Controls, remembered across reloads.
 const languages = [built.translations.defaultLanguage, ...Object.keys(built.translations.translations)];
@@ -34,8 +38,8 @@ const layout = remembered("layout", ["one-per-screen", "list"]);
 
 const widget = $("tessera-respond");
 widget.definition = definition;
-widget.surveyRef = { txId: new Uint8Array(32), index: 0 };
-widget.responder = { 4: { type: "key", keyHash: new Uint8Array(28).fill(1) } };
+widget.surveyRef = sponsor?.surveyRef ?? { txId: new Uint8Array(32), index: 0 };
+widget.responder = { 4: { type: "key", keyHash: sponsor?.keyHash ?? new Uint8Array(28).fill(1) } };
 widget.tipEpoch = Number(definition.endEpoch) - 1;
 widget.showRole = false;
 widget.conditions = built.conditions;
@@ -64,7 +68,9 @@ $("#forget").addEventListener("click", () => {
   location.reload();
 });
 
-widget.addEventListener("tessera:response", (event) => showResponse(event.detail.payload));
+let lastPayload;
+widget.addEventListener("tessera:response", (event) => showResponse((lastPayload = event.detail.payload)));
+$("#submit").addEventListener("click", () => submitResponse(lastPayload));
 
 // ----------------------------------------------------------------------------
 
@@ -95,10 +101,69 @@ function showResponse(payload) {
       return li;
     }),
   );
+  $("#sponsor").hidden = !sponsor;
+  $("#submitted").replaceChildren();
   $("#row").textContent = JSON.stringify(row, null, 2);
   $("#payload").textContent = JSON.stringify({ 17: toDetailedJson(payload) }, null, 2);
   $("#result").hidden = false;
   $("#result").scrollIntoView({ behavior: "smooth" });
+}
+
+/**
+ * Submitting through the sponsor: the respondent's key, kept so that a later
+ * response replaces this one, and the survey responses go to.
+ */
+function sponsoring({ network, survey }) {
+  let secret = fromHex(storage("getItem", `${STORAGE}key`) ?? "");
+  if (secret.length !== 32) {
+    secret = ed25519.utils.randomSecretKey();
+    storage("setItem", `${STORAGE}key`, hex(secret));
+  }
+  const publicKey = ed25519.getPublicKey(secret);
+  const keyHash = blake2b(publicKey, { dkLen: 28 });
+  const [txId, index] = survey.split("#");
+  const note = $("#sponsor-note");
+  note.textContent = `Responses can be submitted on ${network} to ${survey}, as key ${hex(keyHash)}.`;
+  note.hidden = false;
+  $("#submit").textContent = `Submit on ${network}`;
+  return { network, secret, publicKey, keyHash, surveyRef: { txId: fromHex(txId), index: Number(index) } };
+}
+
+/** The sponsor builds and signs the transaction, we sign it, it submits it. */
+async function submitResponse(payload) {
+  const button = $("#submit");
+  const status = $("#submitted");
+  button.disabled = true;
+  status.textContent = "Submitting…";
+  try {
+    // The test Turnstile secret in wrangler.jsonc accepts this dummy token.
+    const { tx, txId } = await post("/api/sponsor", { challenge: "XXXX.DUMMY.TOKEN.XXXX", payload: hex(toCbor(payload)) });
+    const signature = ed25519.sign(fromHex(txId), sponsor.secret);
+    await post("/api/sponsor/submit", { tx, vkey: hex(sponsor.publicKey), signature: hex(signature) });
+    const link = document.createElement("a");
+    link.href = `${EXPLORERS[sponsor.network]}/transaction/${txId}`;
+    link.textContent = txId;
+    status.replaceChildren("Submitted as ", link, " (it shows up after the next block).");
+  } catch (error) {
+    status.textContent = `Not submitted: ${error.message}`;
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function post(path, body) {
+  const res = await fetch(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const json = await res.json().catch(() => ({ error: `${res.status} ${res.statusText}` }));
+  if (!res.ok) throw new Error(json.error);
+  return json;
+}
+
+function hex(bytes) {
+  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+function fromHex(text) {
+  return Uint8Array.from(text.match(/../g) ?? [], (h) => parseInt(h, 16));
 }
 
 function showProblems(problems) {

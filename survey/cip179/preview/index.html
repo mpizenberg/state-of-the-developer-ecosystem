@@ -6,7 +6,13 @@
     <title>Survey preview</title>
     <link rel="stylesheet" href="./page.css" />
     <script type="importmap">
-      { "imports": { "cip-179": "/modules/cip-179/index.js" } }
+      {
+        "imports": {
+          "cip-179": "/modules/cip-179/index.js",
+          "@noble/curves/": "/modules/@noble/curves/",
+          "@noble/hashes/": "/modules/@noble/hashes/"
+        }
+      }
     </script>
     <script type="module" src="./page.js"></script>
   </head>
@@ -14,9 +20,9 @@
     <header>
       <h1>Survey preview</h1>
       <p>
-        The CIP-179 survey built from <code>survey.json</code>, in the widget respondents will use. Nothing is
-        submitted: submitting shows the response and the <code>answers.json</code> row it converts to. Reload
-        after editing <code>survey.json</code>.
+        The CIP-179 survey built from <code>survey.json</code>, in the widget respondents will use. Submitting
+        shows the response and the <code>answers.json</code> row it converts to; it goes on chain only from the
+        "Submit" button, with <code>--sponsor</code>. Reload after editing <code>survey.json</code>.
       </p>
       <div class="controls">
         <label>Language <select id="locale"></select></label>
@@ -39,12 +45,17 @@
       </details>
       <p id="screening" class="note" hidden></p>
       <p id="ui-language" class="note" hidden></p>
+      <p id="sponsor-note" class="note" hidden></p>
 
       <tessera-respond></tessera-respond>
 
       <section id="result" hidden>
         <h2>Response</h2>
         <ul id="checks"></ul>
+        <div id="sponsor" hidden>
+          <button id="submit" type="button"></button>
+          <p id="submitted"></p>
+        </div>
         <h3><code>answers.json</code> row</h3>
         <pre id="row"></pre>
         <details>

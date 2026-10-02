@@ -18,8 +18,12 @@
   ],
   "vars": {
     /* Always pass */
-    "state-of-the-developer-ecosystem-2025-turnstile": "1x0000000000000000000000000000000AA"
+    "state-of-the-developer-ecosystem-2025-turnstile": "1x0000000000000000000000000000000AA",
     /* Always fail */
     /* "state-of-the-developer-ecosystem-2025-turnstile": "2x0000000000000000000000000000000AA" */
+    /* The sponsor (cip179/sponsor.js); its SPONSOR_MNEMONIC is a secret. */
+    "SPONSOR_NETWORK": "preview",
+    "SPONSOR_KOIOS": "https://preview.koios.rest/api/v1",
+    "SPONSOR_SURVEY": "70928d2c8cca0fa616e8df54a54d5c311deeec354f5a261fa6c1009ffde89aa5#0"
   }
 }
